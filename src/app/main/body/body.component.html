@@ -1,0 +1,59 @@
+<div class="container-sm">
+    <label for="filtrar-tabela-nome" class="filtre">Filtre a partir do nome:</label>
+    <input type="text" name="filtro" id="filtrar-tabela-nome" placeholder="Digite o nome do cliente">
+    <label for="filtrar-tabela-codigo" class="filtre">Filtre a partir do código:</label>
+    <input type="text" name="filtro" id="filtrar-tabela-codigo" placeholder="Digite o código do produto">
+    <hr>
+    <h2>Clientes</h2>
+    <div class="table-responsive  ">
+        <table class="table table-bordered table-hover">
+            <thead class="fist-thead">
+                <tr>
+                    <th>Nome</th>
+                    <th>Código do Produto</th>
+                    <th>Contato</th>
+                    <th>Data Recebimento</th>
+                    <th>Data Da Entrega</th>
+                    <th class="remover">Editar</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-cliente">
+                <tr class="cliente">
+                    <td class="info-nome">EXEMPLO</td>
+                    <td class="info-codigo">#0000</td>
+                    <td class="info-contato">(99) 99999-9999</td>
+                    <td class="info-data-chegada">28/08/2021</td>
+                    <td class="info-data-entrega"></td>
+                    <td class="info-remover editar"><i class="fa fa-edit fa-lg"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <section class="container">
+        <h2 class="titulo-form">Adicionar novo cliente</h2>
+        <ul id="mensagens-erro"></ul>
+        <form id="form-adiciona">
+            <div class="novo-cliente">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" placeholder="Digite o nome do cliente" class="campo" required>
+            </div>
+            <div class="grupo">
+                <label for="codigo">Código do produto:</label>
+                <input type="text" name="codigo" placeholder="#0000" class="campo campo-medio" required>
+            </div>
+            <div class="grupo">
+                <label for="contato">Contato:</label>
+                <input type="text" name="contato" placeholder="(XX) XXXXX-XXXX" class="campo campo-medio">
+            </div>
+            <div class="grupo">
+                <label for="dataChegada">Data recebimento:</label>
+                <input type="text" name="dataChegada" placeholder="00/00/0000" class="campo campo-medio" required>
+            </div>
+            <div class="grupo">
+                <label for="dataEntrega">Data da entrega:</label>
+                <input type="text" name="dataEntrega" placeholder="00/00/0000" class="campo campo-medio">
+            </div>
+            <button class="botao" id="adicionar-cliente">Adicionar Cliente</button>
+        </form>
+    </section>
+</div>
