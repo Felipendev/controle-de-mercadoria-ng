@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'controle-mercadoria-ng';
+
+  clientes: Object[] = [];
+  
+  constructor(http: HttpClient){
+    http
+    .get<Object[]>('https://controle-de-mercadoria-api.herokuapp.com/cliente')
+    .subscribe(clientes => this.clientes = clientes);
+  }
 }
