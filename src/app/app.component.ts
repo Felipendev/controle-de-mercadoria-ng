@@ -12,7 +12,7 @@ export class AppComponent {
   
   constructor(http: HttpClient){
     http
-    .get<Object[]>('https://controle-de-mercadoria-api.herokuapp.com/cliente')
+    .get<Object[]>('https://controle-de-mercadoria-api.herokuapp.com/api/v1/cliente/listAll')
     .subscribe(clientes => this.clientes = clientes);
   }
 }
