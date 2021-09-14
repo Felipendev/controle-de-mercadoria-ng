@@ -8,6 +8,8 @@ export class ApiService {
 
     constructor(private http: HttpClient){}
 
+    adicionarCliente(codigo, nomeCliente, sobrenomeCliente )
+
     listFromUser(userName: string){
 
         return this.http
