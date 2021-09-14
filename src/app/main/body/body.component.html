@@ -10,20 +10,24 @@
             <thead class="fist-thead">
                 <tr>
                     <th>Nome</th>
+                    <th>Sobrenome</th>
                     <th>Código do Produto</th>
                     <th>Contato</th>
                     <th>Data Recebimento</th>
                     <th>Data Da Entrega</th>
+                    <th>Status do Produto </th>
                     <th class="remover">Editar</th>
                 </tr>
             </thead>
             <tbody id="tabela-cliente">
                 <tr class="cliente">
-                    <td class="info-nome">EXEMPLO</td>
+                    <td class="info-nome">Cliente</td>
+                    <td class="info-nome">Teste</td>
                     <td class="info-codigo">#0000</td>
                     <td class="info-contato">(99) 99999-9999</td>
                     <td class="info-data-chegada">28/08/2021</td>
-                    <td class="info-data-entrega"></td>
+                    <td class="info-data-entrega">13/09/2021</td>
+                    <td class="info-data-entrega">ENTREGUE</td>
                     <td class="info-remover editar"><i class="fa fa-edit fa-lg"></i></td>
                 </tr>
             </tbody>
@@ -36,6 +40,10 @@
             <div class="novo-cliente">
                 <label for="nome">Nome:</label>
                 <input type="text" name="nome" placeholder="Digite o nome do cliente" class="campo" required>
+            </div>
+            <div class="novo-cliente">
+                <label for="nome">Sobrenome:</label>
+                <input type="text" name="sobrenome" placeholder="Digite o sobrenome do cliente" class="campo">
             </div>
             <div class="grupo">
                 <label for="codigo">Código do produto:</label>

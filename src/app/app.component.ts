@@ -1,5 +1,5 @@
+import { ApiService } from './main/api.service';
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,9 +10,11 @@ export class AppComponent {
 
   clientes: Object[] = [];
   
-  constructor(http: HttpClient){
-    http
-    .get<Object[]>('https://controle-de-mercadoria-api.herokuapp.com/api/v1/cliente/listAll')
-    .subscribe(clientes => this.clientes = clientes);
+  constructor(apiService: ApiService){
+
+    apiService
+    .listFromUser('vinicius')
+    .subscribe(clientes => this.clientes = this.clientes);
+
   }
 }
