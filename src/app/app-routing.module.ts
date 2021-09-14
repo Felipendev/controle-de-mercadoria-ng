@@ -5,9 +5,31 @@ import { InterfaceComponent } from './interface/interface.component';
 import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
-  { path: 'user/:userName', component: InterfaceComponent },
-  { path: 'add/cliente', component: MainComponent },
-  { path: '**', component: NotFoundComponent }
+
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  { 
+    path: 'user/:userName', 
+    component: InterfaceComponent 
+  },
+  { 
+    path: 'home', 
+    component: MainComponent 
+  },
+  {
+    path: 'not-found',
+    component: NotFoundComponent,
+    data: {
+      title: 'Not Found'
+    }
+  },
+  { 
+    path: '**', 
+    redirectTo: 'not-found' 
+  }
 ];
 
 @NgModule({

@@ -7,6 +7,7 @@ import { MainModule } from './main/main.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InterfaceComponent } from './interface/interface.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { InterfaceComponent } from './interface/interface.component';
     AppRoutingModule,
     MainModule,
     ErrorsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

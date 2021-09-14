@@ -1,0 +1,18 @@
+.rodape {
+    display: flex;
+    text-align: center;
+    background: #212529;
+    justify-content: center;
+    background-color: #000000;
+    background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);
+}
+
+.copyright {
+    color: #FFFFFF;
+    font-size: 13px;
+    align-content: center;
+}
+
+p {
+    margin: 1rem;
+}
