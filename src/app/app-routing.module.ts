@@ -2,7 +2,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InterfaceComponent } from './interface/interface.component';
-import { MainComponent } from './main/main.component';
+import { HomeComponent } from './views/home/home.component';
 
 const routes: Routes = [
 
@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   { 
     path: 'home', 
-    component: MainComponent 
+    component: HomeComponent 
   },
   {
     path: 'not-found',

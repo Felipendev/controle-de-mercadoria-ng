@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class MainComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute
@@ -14,7 +14,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const userName = this.activatedRoute.snapshot.params.userName;
   }
 
 }
