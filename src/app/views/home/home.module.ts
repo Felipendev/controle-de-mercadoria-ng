@@ -1,11 +1,11 @@
-import { HomeComponent } from './home.component';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BodyComponent } from '../home/body/body.component';
 import { HeaderComponent } from '../home/header/header.component';
 import { FooterComponent } from '../home/footer/footer.component';
-import { ProdutosListComponent } from './produtos-list/produtos-list.component';
+import { ClientesListComponent } from './clientes-list/clientes-list.component';
+import { HomeComponent } from './home.component';
+import { NgModule } from '@angular/core';
 
 @NgModule({
     declarations: [
@@ -13,7 +13,7 @@ import { ProdutosListComponent } from './produtos-list/produtos-list.component';
         BodyComponent,
         FooterComponent,
         HomeComponent,
-        ProdutosListComponent
+        ClientesListComponent
     ],
     exports:[
         HomeComponent
