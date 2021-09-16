@@ -19,7 +19,6 @@
                     <th class="remover">Editar</th>
                 </tr>
             </thead>
-            <app-clientes-list></app-clientes-list>
             <tbody id="tabela-cliente">
                 <tr class="cliente">
                     <td class="info-nome">Cliente</td>
@@ -32,18 +31,19 @@
                     <td class="info-remover editar"><i class="fa fa-edit fa-lg"></i></td>
                 </tr>
             </tbody>
-            <!-- <tbody id="tabela-cliente">
-                <tr class="cliente" *ngFor="let cliente of clientes">
-                    <td class="info-nome">{{cliente.nomeCliente}}</td>
-                    <td class="info-sobrenome"></td>
-                    <td class="info-codigo">#0000</td>
-                    <td class="info-contato">(99) 99999-9999</td>
-                    <td class="info-data-chegada">28/08/2021</td>
-                    <td class="info-data-entrega">13/09/2021</td>
-                    <td class="info-status-produto">ENTREGUE</td>
-                    <td class="info-remover editar"><i class="fa fa-edit fa-lg"></i></td>
-                </tr>
-            </tbody> -->
+            <app-clientes-list></app-clientes-list>
+                <tbody id="tabela-cliente">
+                    <tr class="cliente" >
+                        <td class="info-nome"></td>
+                        <td class="info-sobrenome"></td>
+                        <td class="info-codigo">#0000</td>
+                        <td class="info-contato">(99) 99999-9999</td>
+                        <td class="info-data-chegada">28/08/2021</td>
+                        <td class="info-data-entrega">13/09/2021</td>
+                        <td class="info-status-produto">ENTREGUE</td>
+                        <td class="info-remover editar"><i class="fa fa-edit fa-lg"></i></td>
+                    </tr>
+                </tbody>  
         </table>
     </div>
     <section class="container">

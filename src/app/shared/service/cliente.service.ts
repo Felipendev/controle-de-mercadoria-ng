@@ -8,7 +8,7 @@ import { Cliente } from '../model/cliente.model';
 })
 export class ClienteService {
 
-  API = "http://localhost:8080/api/v1/cliente";
+  API = "https://controle-de-mercadoria-api.herokuapp.com/api/v1/cliente";
 
   httpOptions = {
     headers: new HttpHeaders({
