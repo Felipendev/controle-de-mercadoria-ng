@@ -1,3 +1,4 @@
+import { ApiService } from './main/api.service';
 import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
@@ -9,7 +10,11 @@ export class AppComponent {
 
   clientes: Object[] = [];
   
-  constructor(){
+  constructor(apiService: ApiService){
+
+    apiService
+    .listFromUser('vinicius')
+    .subscribe(clientes => this.clientes = this.clientes);
 
   }
 }
