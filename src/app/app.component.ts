@@ -7,9 +7,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'controle-mercadoria-ng';
 
-  clientes: Object[] = [];
-  
-  constructor(){
-
-  }
 }
