@@ -1,25 +1,38 @@
+import { SigninComponent } from './signin/signin.component';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { BodyComponent } from '../home/body/body.component';
+import { ClienteFormComponent } from '../home/cliente-form/cliente-form.component';
 import { HeaderComponent } from '../home/header/header.component';
 import { FooterComponent } from '../home/footer/footer.component';
-import { ClientesListComponent } from './clientes-list/clientes-list.component';
 import { HomeComponent } from './home.component';
-import { NgModule } from '@angular/core';
+import { LocalDateTimePipe } from 'src/app/shared/pipe/local-date-time.pipe';
+import { PhonePipe } from 'src/app/shared/pipe/phone/phone.pipe';
+import { FiltroPipe } from './../../shared/pipe/filtro-form/filtro.pipe';
+import { VmessageModel } from 'src/app/shared/components/vmessage/vmessage/vmessage.model';
 
 @NgModule({
     declarations: [
         HeaderComponent,
-        BodyComponent,
         FooterComponent,
         HomeComponent,
-        ClientesListComponent
+        LocalDateTimePipe,
+        ClienteFormComponent,
+        PhonePipe,
+        FiltroPipe,
+        SigninComponent,
+        
     ],
     exports:[
         HomeComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        VmessageModel
+
     ]
 })
 export class HomeModule {}

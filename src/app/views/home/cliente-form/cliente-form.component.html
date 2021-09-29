@@ -1,0 +1,62 @@
+<section class="container">
+    <h3 class="titulo-form text-primary">Adicionar produto</h3>
+    <ul id="mensagens-erro"></ul>
+    <form class="row g-3" novalidate [formGroup]="form">
+        <div class="form-floating col-md-6">
+            <input class="form-control" id="floatingInput" type="text" formControlName="nome" name="nome" placeholder="Digite o nome do cliente" required>
+            <label for="floatingInput">Nome:</label>
+        </div>
+        <div class="form-floating col-md-6">
+            <input class="form-control" id="floatingInput" type="text" formControlName="sobrenome" name="sobrenome" placeholder="Digite o sobrenome do cliente">
+            <label for="floatingInput">Sobrenome:</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input class="form-control" id="floatingInput" type="number" formControlName="codigo" name="codigo" placeholder="0000" required>
+            <label for="floatingInput">Código do produto:</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input class="form-control" id="floatingInput" type="tel" formControlName="contato" name="contato" placeholder="(XX) XXXXX-XXXX">
+            <label for="floatingInput">Contato:</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input class="form-control" id="floatingInput" type="date" formControlName="dataRecebimento" name="dataRecebimento" placeholder="00/00/0000" #dataRecebimento>
+            <label for="floatingInput">Data recebimento:</label>
+        </div>
+    </form>
+    <button type='button' class="btn btn-primary btn-lg mt-3" id="adicionar-cliente" (click)="criaCliente()">Adicionar</button>
+</section>
+<hr>
+<div class="container-sm ">
+        <div class="form-floating col-md-6">
+          <input class="form-control" id="floatingInput" type="search"  [(ngModel)]="searchValue" autofocus placeholder="por nome, sobrenome, código ou status"/>
+          <label for="floatingInput"><i class="fa fa-search fa-lg p-1"></i>Buscar por nome, sobrenome, código ou status</label>
+      </div>
+      <hr>
+    <h3 class="text-primary">Clientes</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover"> 
+            <thead class="fist-thead bg-primary">
+                <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Código do Produto</th>
+                    <th>Contato</th>
+                    <th>Data Recebimento</th>
+                    <th>Status do Produto </th>
+                </tr>
+            </thead>
+                <tbody id="tabela-cliente">
+                    <ng-container *ngFor="let cliente of clientes | filtro: searchValue">                
+                    <tr class="cliente" >
+                        <td class="info-nome">{{cliente.nome}}</td>
+                        <td class="info-sobrenome">{{cliente.sobrenome}}</td>
+                        <td class="info-codigo"> #{{cliente.codigo}}</td>
+                        <td class="info-contato" >{{cliente.contato}}</td>
+                        <td class="info-data-recebimento">{{cliente.dataRecebimento | date: 'dd/MM/yyyy'}}</td>
+                        <td class="info-status-produto">{{cliente.statusProduto}}</td>
+                    </tr>
+                </ng-container>
+                </tbody>  
+        </table>
+    </div>
+</div>
