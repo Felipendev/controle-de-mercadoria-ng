@@ -1,37 +1,35 @@
-<section class="container">
-    <h3 class="titulo-form text-primary">Adicionar produto</h3>
-    <ul id="mensagens-erro"></ul>
-    <form class="row g-3" novalidate [formGroup]="form">
-        <div class="form-floating col-md-6">
-            <input class="form-control" id="floatingInput" type="text" formControlName="nome" name="nome" placeholder="Digite o nome do cliente" required>
-            <label for="floatingInput">Nome:</label>
+<!-- <button type='button' class="btn btn-primary btn-lg mt-3" id="adicionar-cliente" (click)="criaCliente()">Adicionar</button> -->
+<!-- Button trigger modal -->
+<div class="search d-flex flex-row justify-content-evenly">
+    <button type="button" class="btn btn-primary btn-sm" 
+        data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="fa fa-plus"></i> Novo Produto 
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
         </div>
-        <div class="form-floating col-md-6">
-            <input class="form-control" id="floatingInput" type="text" formControlName="sobrenome" name="sobrenome" placeholder="Digite o sobrenome do cliente">
-            <label for="floatingInput">Sobrenome:</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input class="form-control" id="floatingInput" type="number" formControlName="codigo" name="codigo" placeholder="0000" required>
-            <label for="floatingInput">Código do produto:</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input class="form-control" id="floatingInput" type="tel" formControlName="contato" name="contato" placeholder="(XX) XXXXX-XXXX">
-            <label for="floatingInput">Contato:</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input class="form-control" id="floatingInput" type="date" formControlName="dataRecebimento" name="dataRecebimento" placeholder="00/00/0000" #dataRecebimento>
-            <label for="floatingInput">Data recebimento:</label>
-        </div>
-    </form>
-    <button type='button' class="btn btn-primary btn-lg mt-3" id="adicionar-cliente" (click)="criaCliente()">Adicionar</button>
-</section>
-<hr>
-<div class="container-sm ">
-        <div class="form-floating col-md-6">
-          <input class="form-control" id="floatingInput" type="search"  [(ngModel)]="searchValue" autofocus placeholder="por nome, sobrenome, código ou status"/>
-          <label for="floatingInput"><i class="fa fa-search fa-lg p-1"></i>Buscar por nome, sobrenome, código ou status</label>
       </div>
-      <hr>
+    </div>
+    <div class="form-floating col-md-6">
+      <input class="form-control" id="floatingInput" type="search"  [(ngModel)]="searchValue" autofocus placeholder="por nome, sobrenome, código ou status"/>
+      <label for="floatingInput"><i class="fa fa-search fa-lg p-1"></i>Buscar por nome, sobrenome, código ou status</label>
+    </div>
+</div>
+<hr>  
+<div class="container-sm ">
     <h3 class="text-primary">Clientes</h3>
     <div class="table-responsive">
         <table class="table table-bordered table-hover"> 

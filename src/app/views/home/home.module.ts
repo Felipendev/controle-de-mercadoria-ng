@@ -11,6 +11,7 @@ import { LocalDateTimePipe } from 'src/app/shared/pipe/local-date-time.pipe';
 import { PhonePipe } from 'src/app/shared/pipe/phone/phone.pipe';
 import { FiltroPipe } from './../../shared/pipe/filtro-form/filtro.pipe';
 import { VmessageModel } from 'src/app/shared/components/vmessage/vmessage/vmessage.model';
+import { AddProdutoFormComponent } from './add-cliente-form/add-produto-form/add-produto-form.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { VmessageModel } from 'src/app/shared/components/vmessage/vmessage/vmess
         PhonePipe,
         FiltroPipe,
         SigninComponent,
+        AddProdutoFormComponent,
         
     ],
     exports:[

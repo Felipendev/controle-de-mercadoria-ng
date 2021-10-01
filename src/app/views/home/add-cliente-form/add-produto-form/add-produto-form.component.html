@@ -1,0 +1,22 @@
+<form class="row g-3" novalidate [formGroup]="form">
+    <div class="form-floating col-md-6">
+        <input class="form-control" id="floatingInput" type="text" formControlName="nome" name="nome" placeholder="Digite o nome do cliente" required>
+        <label for="floatingInput">Nome:</label>
+    </div>
+    <div class="form-floating col-md-6">
+        <input class="form-control" id="floatingInput" type="text" formControlName="sobrenome" name="sobrenome" placeholder="Digite o sobrenome do cliente">
+        <label for="floatingInput">Sobrenome:</label>
+    </div>
+    <div class="form-floating col-md-4">
+        <input class="form-control" id="floatingInput" type="number" formControlName="codigo" name="codigo" placeholder="0000" required>
+        <label for="floatingInput">Código do produto:</label>
+    </div>
+    <div class="form-floating col-md-4">
+        <input class="form-control" id="floatingInput" type="tel" formControlName="contato" name="contato" placeholder="(XX) XXXXX-XXXX">
+        <label for="floatingInput">Contato:</label>
+    </div>
+    <div class="form-floating col-md-4">
+        <input class="form-control" id="floatingInput" type="date" formControlName="dataRecebimento" name="dataRecebimento" placeholder="00/00/0000" #dataRecebimento>
+        <label for="floatingInput">Data recebimento:</label>
+    </div>
+</form>
