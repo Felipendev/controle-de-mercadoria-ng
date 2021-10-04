@@ -1,0 +1,35 @@
+<div class="modal modal-signin d-block bg-info py-5" tabindex="-1" role="dialog" id="modalSignin">
+    <img class="logo" src="https://i.ibb.co/Qdcy14T/unnamed.png" alt="Logo da educação Adventista" />
+    <div class="modal-dialog" role="document" >
+        <div class="modal-content rounded-5 shadow justify-content-center">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <!-- <h5 class="modal-title">Modal title</h5> -->
+                <h2 class="fw-bold mb-0">Login</h2>
+            </div>
+
+            <div class="modal-body p-5 pt-0 ">
+                <form [formGroup]= "loginForm" (submit)="login()">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control rounded-4" formControlName="userName" id="floatingInput" placeholder="vinicius@cade">
+                        <label for="floatingInput">Nome</label>
+                        <app-vmessage 
+                            *ngIf= "loginForm.get('userName')?.errors?.required" 
+                            text="O nome precisa ser preenchido">
+                        </app-vmessage>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control rounded-4" formControlName="password" id="floatingPassword" placeholder="Senha">
+                        <label for="floatingPassword">Senha</label>
+                        <app-vmessage 
+                            *ngIf= "loginForm.get('password')?.errors?.required" 
+                            text="A senha precisa ser preenchida">
+                        </app-vmessage>
+                    </div>
+                    <button [disabled]="loginForm.invalid" (click)="login()" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">Login</button>
+                    <small class="text-muted">Acesso Administrador </small>
+                    <hr class="my-4">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,11 @@
+import { StatusProduto } from './status-produto.enum';
 export interface Cliente{
-    cliente: Cliente[];
-    id: string;
+    id: number;
     nome: string;
-    codigo: string;
-    dataRecebimento: string;
-    telefone: any[];
-    statusProduto: string;
+    sobrenome: string;
+    codigo: number;
+    dataRecebimento: Date;
+    dataEntrega: Date;
+    contato: number;
+    statusProduto: StatusProduto;
 }

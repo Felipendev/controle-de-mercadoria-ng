@@ -1,7 +1,7 @@
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InterfaceComponent } from './interface/interface.component';
+import { SigninComponent } from './views/home/signin/signin.component';
 import { HomeComponent } from './views/home/home.component';
 
 const routes: Routes = [
@@ -9,11 +9,11 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
+    component: SigninComponent
   },
   { 
-    path: 'user/:userName', 
-    component: InterfaceComponent 
+    path: 'signin', 
+    component: SigninComponent 
   },
   { 
     path: 'home', 
