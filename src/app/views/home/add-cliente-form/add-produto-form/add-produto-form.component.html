@@ -1,22 +1,61 @@
-<form class="row g-3" novalidate [formGroup]="form">
+<!-- Button trigger modal -->
+<div class="search d-flex flex-row justify-content-around mb-3">
+    <button type="button" class="btn btn-primary btn-sm" (click)="toggle()" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        <i class="fa fa-plus"></i> Novo Produto
+    </button>
+    <!-- Search area -->
     <div class="form-floating col-md-6">
-        <input class="form-control" id="floatingInput" type="text" formControlName="nome" name="nome" placeholder="Digite o nome do cliente" required>
-        <label for="floatingInput">Nome:</label>
+        <input class="form-control" id="floatingInput" type="search" [(ngModel)]="searchValue"
+            placeholder="por nome, sobrenome, código ou status" />
+        <label for="floatingInput"><i class="fa fa-search fa-lg p-1"></i>Buscar por nome, sobrenome, código ou
+            status</label>
     </div>
-    <div class="form-floating col-md-6">
-        <input class="form-control" id="floatingInput" type="text" formControlName="sobrenome" name="sobrenome" placeholder="Digite o sobrenome do cliente">
-        <label for="floatingInput">Sobrenome:</label>
+</div>
+<!-- Modal -->
+<div class="modal-overlay" [ngClass]="{ 'active': isShow }" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Novo Produto</h5>
+                <button type="button" class="btn-close" (click)="toggle()" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3" novalidate [formGroup]="form">
+                    <div class="form-floating">
+                        <input class="form-control" id="floatingInput" type="text" formControlName="nome" name="nome"
+                            placeholder="Digite o nome do cliente" required>
+                        <label for="floatingInput">Nome:</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" id="floatingInput" type="text" formControlName="sobrenome"
+                            name="sobrenome" placeholder="Digite o sobrenome do cliente">
+                        <label for="floatingInput">Sobrenome:</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" id="floatingInput" type="number" formControlName="codigo"
+                            name="codigo" placeholder="0000" required>
+                        <label for="floatingInput">Código do produto:</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" id="floatingInput" type="tel" formControlName="contato"
+                            name="contato" placeholder="(XX) XXXXX-XXXX">
+                        <label for="floatingInput">Contato:</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" id="floatingInput" type="date" formControlName="dataRecebimento"
+                            name="dataRecebimento" placeholder="00/00/0000" #dataRecebimento>
+                        <label for="floatingInput">Data:</label>
+                    </div>
+                </form>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        (click)="cancelar()">Cancelar</button>
+                    <button type="button" class="btn btn-primary" (click)="criaCliente()">Adicionar</button>
+                </div>
+            </div>
+        <div>
     </div>
-    <div class="form-floating col-md-4">
-        <input class="form-control" id="floatingInput" type="number" formControlName="codigo" name="codigo" placeholder="0000" required>
-        <label for="floatingInput">Código do produto:</label>
-    </div>
-    <div class="form-floating col-md-4">
-        <input class="form-control" id="floatingInput" type="tel" formControlName="contato" name="contato" placeholder="(XX) XXXXX-XXXX">
-        <label for="floatingInput">Contato:</label>
-    </div>
-    <div class="form-floating col-md-4">
-        <input class="form-control" id="floatingInput" type="date" formControlName="dataRecebimento" name="dataRecebimento" placeholder="00/00/0000" #dataRecebimento>
-        <label for="floatingInput">Data recebimento:</label>
-    </div>
-</form>
+</div>
