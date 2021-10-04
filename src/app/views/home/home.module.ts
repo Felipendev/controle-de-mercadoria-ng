@@ -11,7 +11,7 @@ import { LocalDateTimePipe } from 'src/app/shared/pipe/local-date-time.pipe';
 import { PhonePipe } from 'src/app/shared/pipe/phone/phone.pipe';
 import { FiltroPipe } from './../../shared/pipe/filtro-form/filtro.pipe';
 import { VmessageModel } from 'src/app/shared/components/vmessage/vmessage/vmessage.model';
-import { AddProdutoFormComponent } from './add-cliente-form/add-produto-form/add-produto-form.component';
+import { MenuModule } from 'src/app/shared/menu/menu.module';
 @NgModule({
     declarations: [
         HeaderComponent,
@@ -21,8 +21,7 @@ import { AddProdutoFormComponent } from './add-cliente-form/add-produto-form/add
         ClienteFormComponent,
         PhonePipe,
         FiltroPipe,
-        SigninComponent,
-        AddProdutoFormComponent,
+        SigninComponent
         
     ],
     exports:[
@@ -32,7 +31,8 @@ import { AddProdutoFormComponent } from './add-cliente-form/add-produto-form/add
         CommonModule,
         ReactiveFormsModule,
         FormsModule,
-        VmessageModel
+        VmessageModel,
+        MenuModule
 
     ]
 })
