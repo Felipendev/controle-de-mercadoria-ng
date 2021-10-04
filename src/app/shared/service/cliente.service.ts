@@ -1,4 +1,3 @@
-import { FiltroPipe } from './../pipe/filtro-form/filtro.pipe';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
