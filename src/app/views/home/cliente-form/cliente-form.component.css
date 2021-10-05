@@ -21,6 +21,39 @@
 }
 
 .modal-dialog {
-    background: #f0f2f0;
+    background: none;
     padding: 1.4rem;
+}
+
+.modal-footer .hidden {
+    opacity: 0;
+}
+
+.modal-footer .active {
+    opacity: 1;
+}
+
+.rounded-circle{
+    animation: shadow-pulse 1s alternate;
+}
+
+.ng-invalid .ngtouched {
+    border: 1px solid red;
+}
+@keyframes shadow-pulse {
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 111, 255, 0.2);
+        transform: scale(1);
+    }
+
+    70% {
+        box-shadow: 0 0 0 35px rgba(0, 111, 255, 0.1);
+        transform: scale(1);
+    }
+
+    100%{
+        box-shadow: 0 0 0 35px rgba(0, 111, 255, 0);
+        transform: scale(1);
+    }
+
 }
