@@ -13,7 +13,7 @@
   <!-- Search area -->
   <div class="form-floating col-md-6">
     <input class="form-control" id="floatingInput" type="search" [(ngModel)]="searchValue"
-      placeholder="por nome, sobrenome, código ou status" />
+      placeholder=" Buscar por nome, sobrenome, código ou status" />
     <label for="floatingInput"><i class="fa fa-search fa-lg p-1"></i>Buscar</label>
   </div>
 </div>
@@ -26,46 +26,54 @@
         <button type="button" class="btn-close" (click)="toggle()" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="row g-2" novalidate [formGroup]="form">
-          <div class="form-floating-sm">
-            <label for="floatingInput">Nome:</label>
-            <input class="form-control-sm form-control" id="floatingInput" type="text" formControlName="nome" name="nome"
-              placeholder="Digite o nome do cliente" required>
-            <small class="text-danger" *ngIf="form.get('nome')!.value == null && form.get('nome')!.touched && form.get('nome')!.invalid" minlength="2" maxlength="4">
+        <form  (ngSubmit)= "criaCliente()" class="row g-2" novalidate [formGroup]= "form">
+          <div class="form-floating-sm" 
+              [class.has-error]="form.get('nome')!.value == null && form.get('nome')!.touched && form.get('nome')!.invalid"
+              [class.has-feedback]="form.get('nome')!.value == null && form.get('nome')!.touched && form.get('nome')!.invalid">          
+              <label for="nome">Nome:</label>
+            <input 
+                  class="form-control-sm form-control" 
+                  id="floatingInput" type="text" 
+                  formControlName="nome" name="nome"
+                  placeholder="Digite o nome do cliente" required 
+                  #nome
+            >
+            <small class="text-danger" *ngIf="form.get('nome')!.value == null && form.get('nome')!.touched" minlength="2" maxlength="4">
               Esse campo precisa ser preenchido 
             </small>
           </div>
           <div class="form-floating-sm-sm">
-            <label for="floatingInput">Sobrenome:</label>
-            <input class="form-control-sm form-control" id="floatingInput" type="text" formControlName="sobrenome" name="sobrenome"
+            <label for="">Sobrenome:</label>
+            <input class="form-control-sm form-control" id="" type="text" formControlName="sobrenome" name="sobrenome"
               placeholder="Digite o sobrenome do cliente" required>
               <small class="text-danger" *ngIf="form.get('sobrenome')!.value == null && form.get('sobrenome')!.touched">Esse campo precisa ser preenchido</small>
           </div>
           <div class="form-floating-sm">
-            <label for="floatingInput">Contato:</label>
-            <input class="form-control-sm form-control" id="floatingInput" type="tel" formControlName="contato" name="contato"
+            <label for="">Contato:</label>
+            <input class="form-control-sm form-control" id="" type="tel" formControlName="contato" name="contato"
             placeholder="(XX) XXXXX-XXXX" required>
             <small class="text-danger" *ngIf="form.get('contato')!.value == null && form.get('contato')!.touched" >Esse campo precisa ser preenchido</small>
           </div>
           <div class="form-floating-sm">
-            <label for="floatingInput">Código do produto:</label>
-            <input class="form-control-sm form-control" id="floatingInput" type="number" formControlName="codigo" name="codigo"
+            <label for="">Código do produto:</label>
+            <input class="form-control-sm form-control" id="" type="number" formControlName="codigo" name="codigo"
               placeholder="0000" required maxlength="4">
             <small class="text-danger" *ngIf="form.get('codigo')!.value == null && form.get('codigo')!.touched">Esse campo precisa ser preenchido</small>
           </div>
           <div class="form-floating-sm">
-            <label for="floatingInput">Data:</label>
-            <input class="form-control-sm form-control" id="floatingInput" type="date" formControlName="dataRecebimento"
+            <label for="">Data:</label>
+            <input class="form-control-sm form-control" id="" type="date" formControlName="dataRecebimento"
               name="dataRecebimento" placeholder="00/00/0000" #dataRecebimento required >
             <small class="text-danger" *ngIf="form.get('dataRecebimento')!.value == null && form.get('dataRecebimento')!.touched">Esse campo precisa ser preenchido</small>
           </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-outline-success btn-sm">Salvar e adicionar outro </button>
+          <button type="submit" class="btn btn-outline-primary btn-sm">Adicionar</button>
+          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-dismiss="modal" (click)="cancelar()">Limpar</button>        
+        </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-dismiss="modal" (click)="cancelar()">Limpar</button>
-        <button type="button" class="btn btn-outline-primary btn-sm" [disabled]= "form.invalid" (click)="criaCliente()">Adicionar</button>
-        <button type="button" class="btn btn-outline-primary btn-sm" [disabled]= "form.invalid" >Salvar e Adicionar outro </button>
-      </div>
+        
     </div>
   </div>
 </div>
@@ -94,9 +102,9 @@
             <td class="info-contato">{{cliente.contato}}</td>
             <td class="info-data-recebimento">{{cliente.dataRecebimento | date: 'dd/MM/yyyy'}}</td>
             <td class="info-status-produto">{{cliente.statusProduto}}</td>
-            <td>
-              <a class="btn"><i class="fa fa-edit"></i></a>
-              <a class="btn"><i class="fa fa-trash"></i></a>
+            <td class="">
+              <a class="btn btn-outline-warning m-1"><i class="fa fa-edit"></i></a>
+              <a class="btn btn-outline-danger"><i class="fa fa-trash"></i></a>
             </td>
           </tr>
         </ng-container>
