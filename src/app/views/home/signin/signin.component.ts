@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SigninComponent implements OnInit {
 
-
+  submitted = false;
   loginForm!: FormGroup;
 
   constructor(
@@ -29,6 +29,18 @@ export class SigninComponent implements OnInit {
   }
   login(){
    this.router.navigate(["/home"]);
+  }
+
+  onSubmit() {
+    this.submitted = true
+    console.log(this.loginForm.value);
+    if(this.loginForm.valid) {
+      console.log('Subimit')
+    }
+  }
+
+  hasError(field: string) {
+    return this.loginForm.get(field)?.errors;
   }
 
 }

@@ -59,13 +59,11 @@ export class ClienteFormComponent implements OnInit {
       this.service.postCliente(this.form.value).subscribe(result => {});
       // location.assign("/home");
     }
-
     
     cancelar(){
       this.submitted = false;
       this.form.reset();
     }
-
 
     toggle() {
       this.isShow = !this.isShow;
