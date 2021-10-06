@@ -30,12 +30,12 @@ export class ClienteFormComponent implements OnInit {
 
     ngOnInit(): void {
       this.form = this.fb.group({
-        nome: [null, this.validarObrigatoriedade],
-        sobrenome: [null, this.validarObrigatoriedade],
-        codigo: [null, this.validarObrigatoriedade],
+        nome: [null, [this.validarObrigatoriedade, Validators.minLength(2), Validators.maxLength(50)]],
+        sobrenome: [null, [this.validarObrigatoriedade, Validators.minLength(2), Validators.maxLength(50)]],
+        codigo: [null, [this.validarObrigatoriedade, Validators.minLength(4), Validators.maxLength(5)]],
         dataRecebimento: [ null, this.validarObrigatoriedade],
         horaRecebimento: [null, this.validarObrigatoriedade],
-        contato: [null, this.validarObrigatoriedade],
+        contato: [null, [this.validarObrigatoriedade, Validators.minLength(8)]],
         statusProduto: StatusProduto.RECEBIDO
       });
       this.getClientes();
@@ -59,6 +59,7 @@ export class ClienteFormComponent implements OnInit {
       this.service.postCliente(this.form.value).subscribe(result => {});
       // location.assign("/home");
     }
+
     
     cancelar(){
       this.submitted = false;
@@ -70,8 +71,16 @@ export class ClienteFormComponent implements OnInit {
       this.isShow = !this.isShow;
     }
 
-    onSubmit(form: any) {
-      console.log(form)
+    onSubmit() {
+      this.submitted = true
+      console.log(this.form.value);
+      if(this.form.valid) {
+        console.log('Subimit')
+      }
+    }
+
+    hasError(field: string) {
+      return this.form.get(field)?.errors;
     }
 
 }

@@ -3,13 +3,13 @@
 <!-- Modal -->
 
 <div class="search d-flex flex-row justify-content-around">
-  <div>    
-    Novo Produto
-    <button type="button" class="btn btn-primary rounded-circle" (click)="toggle()" data-bs-toggle="modal"
-    data-bs-target="#exampleModal">
-    <i class="fa fa-plus"></i>
-  </button>
-</div>
+  <div> Novo Produto
+        <button 
+                type="button" class="btn btn-primary rounded-circle" (click)="toggle()" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                <i class="fa fa-plus"></i>
+        </button>
+  </div>
   <!-- Search area -->
   <div class="form-floating col-md-6">
     <input class="form-control" id="floatingInput" type="search" [(ngModel)]="searchValue"
@@ -26,51 +26,114 @@
         <button type="button" class="btn-close" (click)="toggle()" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form  (ngSubmit)= "criaCliente()" class="row g-2" novalidate [formGroup]= "form">
-          <div class="form-floating-sm" 
-              [class.has-error]="form.get('nome')!.value == null && form.get('nome')!.touched && form.get('nome')!.invalid"
-              [class.has-feedback]="form.get('nome')!.value == null && form.get('nome')!.touched && form.get('nome')!.invalid">          
+        <form  (ngSubmit)="criaCliente()" class="row g-2" novalidate [formGroup]= "form">
+          <div class="form-floating-sm">          
               <label for="nome">Nome:</label>
             <input 
                   class="form-control-sm form-control" 
-                  id="floatingInput" type="text" 
+                  id="nome" type="text" 
                   formControlName="nome" name="nome"
                   placeholder="Digite o nome do cliente" required 
-                  #nome
-            >
-            <small class="text-danger" *ngIf="form.get('nome')!.value == null && form.get('nome')!.touched" minlength="2" maxlength="4">
-              Esse campo precisa ser preenchido 
+                  #nome [ngClass]="{'is-invalid': submitted && hasError('nome')}">
+            <small 
+                  class="invalid-feedback" 
+                  *ngIf="hasError('nome') && hasError('nome')!['required']">
+                  O nome precisa ser preenchido
+            </small>
+            <small 
+                  class="invalid-feedback" 
+                  *ngIf="hasError('nome') && hasError('nome')!['minlength']">
+                  O nome precisa ter no mínino {{ hasError('nome')!['minlength'].requiredLength }} caracteres.
+            </small>
+            <small 
+                  class="invalid-feedback" 
+                  *ngIf="hasError('nome') && hasError('nome')!['maxlength']">
+                  O nome deve ter no máximo {{ hasError('nome')!['maxlength'].requiredLength }} caracteres.
             </small>
           </div>
           <div class="form-floating-sm-sm">
-            <label for="">Sobrenome:</label>
-            <input class="form-control-sm form-control" id="" type="text" formControlName="sobrenome" name="sobrenome"
-              placeholder="Digite o sobrenome do cliente" required>
-              <small class="text-danger" *ngIf="form.get('sobrenome')!.value == null && form.get('sobrenome')!.touched">Esse campo precisa ser preenchido</small>
+            <label for="sobrenome">Sobrenome:</label>
+            <input 
+                  class="form-control-sm form-control" 
+                  id="sobrenome" type="text" 
+                  formControlName="sobrenome" name="sobrenome"
+                  placeholder="Digite o sobrenome do cliente" required
+                  [ngClass]="{'is-invalid': submitted && hasError('sobrenome')}">
+              <small 
+                    class="invalid-feedback" 
+                    *ngIf="hasError('sobrenome') && hasError('sobrenome')!['required']">
+                    O sobrenome precisa ser preenchido
+              </small>
+              <small 
+                  class="invalid-feedback" 
+                  *ngIf="hasError('sobrenome') && hasError('sobrenome')!['minlength']">
+                  O sobrenome precisa ter no mínino {{ hasError('sobrenome')!['minlength'].requiredLength }} caracteres.
+              </small>
+              <small 
+                  class="invalid-feedback" 
+                  *ngIf="hasError('sobrenome') && hasError('sobrenome')!['maxlength']">
+                  O sobrenome deve ter no máximo {{ hasError('sobrenome')!['maxlength'].requiredLength }} caracteres.
+              </small>
           </div>
           <div class="form-floating-sm">
-            <label for="">Contato:</label>
-            <input class="form-control-sm form-control" id="" type="tel" formControlName="contato" name="contato"
-            placeholder="(XX) XXXXX-XXXX" required>
-            <small class="text-danger" *ngIf="form.get('contato')!.value == null && form.get('contato')!.touched" >Esse campo precisa ser preenchido</small>
+            <label for="contato">Contato:</label>
+            <input 
+                  class="form-control-sm form-control" 
+                  id="contato" type="tel" formControlName="contato" name="contato"
+                  placeholder="(00) 00000-0000" required
+                  [ngClass]="{'is-invalid': submitted && hasError('contato')}"
+                  mask="(00) 00000-0000">
+            <small class="invalid-feedback" 
+                   *ngIf="hasError('contato') && hasError('contato')!['required']">
+                   O contato precisa ser preenchido
+            </small>
+            <small 
+                  class="invalid-feedback" 
+                  *ngIf="hasError('contato') && hasError('contato')!['minlength']">
+                  O contato precisa ter no mínino {{ hasError('contato')!['minlength'].requiredLength }} caracteres.
+            </small>
           </div>
           <div class="form-floating-sm">
-            <label for="">Código do produto:</label>
-            <input class="form-control-sm form-control" id="" type="number" formControlName="codigo" name="codigo"
-              placeholder="0000" required maxlength="4">
-            <small class="text-danger" *ngIf="form.get('codigo')!.value == null && form.get('codigo')!.touched">Esse campo precisa ser preenchido</small>
+            <label for="contato">Código do produto:</label>
+            <input 
+                  class="form-control-sm form-control" 
+                  id="codigo" type="text" formControlName="codigo" name="codigo"
+                  placeholder="0000" required maxlength="5"
+                  [ngClass]="{'is-invalid': submitted && hasError('codigo')}" >
+            <small 
+                  class="invalid-feedback" 
+                  *ngIf="hasError('codigo') && hasError('codigo')!['required']">
+                  O codigo precisa ser preenchido
+            </small>
+            <small 
+                  class="invalid-feedback" 
+                  *ngIf="hasError('codigo') && hasError('codigo')!['minlength']">
+                  O codigo precisa ter no mínino {{ hasError('codigo')!['minlength'].requiredLength }} caracteres.
+            </small>
+            <small 
+                  class="invalid-feedback" 
+                  *ngIf="hasError('codigo') && hasError('codigo')!['maxlength']">
+                  O codigo deve ter no máximo {{ hasError('codigo')!['maxlength'].requiredLength }} caracteres.
+            </small>
           </div>
           <div class="form-floating-sm">
-            <label for="">Data:</label>
-            <input class="form-control-sm form-control" id="" type="date" formControlName="dataRecebimento"
-              name="dataRecebimento" placeholder="00/00/0000" #dataRecebimento required >
-            <small class="text-danger" *ngIf="form.get('dataRecebimento')!.value == null && form.get('dataRecebimento')!.touched">Esse campo precisa ser preenchido</small>
+            <label for="dataRecebimento">Data:</label>
+            <input 
+                  class="form-control-sm form-control" 
+                  id="dataRecebimento" type="date" formControlName="dataRecebimento"
+                  name="dataRecebimento" placeholder="00/00/0000" #dataRecebimento required
+                  [ngClass]="{'is-invalid': submitted && hasError('dataRecebimento')}"  >
+            <small 
+                  class="invalid-feedback" 
+                  *ngIf="hasError('dataRecebimento') && hasError('dataRecebimento')!['required']">
+                  A data precisa ser preenchida
+            </small>
           </div>
           <div class="modal-footer">
-          <button type="button" class="btn btn-outline-success btn-sm">Salvar e adicionar outro </button>
-          <button type="submit" class="btn btn-outline-primary btn-sm">Adicionar</button>
-          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-dismiss="modal" (click)="cancelar()">Limpar</button>        
-        </div>
+            <button type="button" class="btn btn-outline-success btn-sm">Salvar e adicionar outro </button>
+            <button type="submit" class="btn btn-outline-primary btn-sm">Adicionar</button>
+            <button type="button" class="btn btn-outline-warning btn-sm" data-bs-dismiss="modal" (click)="cancelar()">Limpar</button>        
+          </div>
         </form>
       </div>
         

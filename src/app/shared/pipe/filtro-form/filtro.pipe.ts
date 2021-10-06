@@ -13,7 +13,6 @@ export class FiltroPipe implements PipeTransform {
     return Clientes.filter(cliente => 
       cliente.nome.toLocaleLowerCase().includes(buscaValor.toLocaleLowerCase()) || 
       cliente.sobrenome.toLocaleLowerCase().includes(buscaValor.toLocaleLowerCase()) ||
-      cliente.codigo.toString().toLocaleString().includes(buscaValor.toLocaleLowerCase()) ||
-      cliente.statusProduto.toLocaleLowerCase().includes(buscaValor.toLocaleLowerCase()))
+      cliente.codigo.toString().toLocaleString().includes(buscaValor.toLocaleLowerCase()))
   }
 }
