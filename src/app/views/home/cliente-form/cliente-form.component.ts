@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 
 import { ClienteService } from 'src/app/shared/service/cliente.service';
@@ -13,11 +13,13 @@ import { Cliente } from 'src/app/shared/model/cliente.model';
 })
 export class ClienteFormComponent implements OnInit {
 
+
   isShow = false;  
   searchValue!: string;
   form!: FormGroup;
   submitted = false;
   clientes: Cliente[] = [];
+
 
   @Input() pattern!: string | RegExp
   
@@ -28,16 +30,21 @@ export class ClienteFormComponent implements OnInit {
 
     ngOnInit(): void {
       this.form = this.fb.group({
-        nome: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-        sobrenome: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-        codigo: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(4)]],
-        dataRecebimento: [ null, [Validators.required]],
-        horaRecebimento: [null, [Validators.required]],
-        contato: [null, [Validators.required]],
+        nome: [null, [this.validarObrigatoriedade, Validators.minLength(2), Validators.maxLength(50)]],
+        sobrenome: [null, [this.validarObrigatoriedade, Validators.minLength(2), Validators.maxLength(50)]],
+        codigo: [null, [this.validarObrigatoriedade, Validators.minLength(4), Validators.maxLength(5)]],
+        dataRecebimento: [ null, this.validarObrigatoriedade],
+        horaRecebimento: [null, this.validarObrigatoriedade],
+        contato: [null, [this.validarObrigatoriedade, Validators.minLength(8)]],
         statusProduto: StatusProduto.RECEBIDO
       });
       this.getClientes();
     }
+
+    validarObrigatoriedade(input: FormControl) {
+      return (input.value ? null : { obrigatoriedade: true });
+    }
+  
     
     getClientes(){
       this.service.getClientes().subscribe(data => {
@@ -52,6 +59,7 @@ export class ClienteFormComponent implements OnInit {
       this.service.postCliente(this.form.value).subscribe(result => {});
       // location.assign("/home");
     }
+
     
     cancelar(){
       this.submitted = false;
@@ -62,6 +70,18 @@ export class ClienteFormComponent implements OnInit {
     toggle() {
       this.isShow = !this.isShow;
     }
-  
+
+    onSubmit() {
+      this.submitted = true
+      console.log(this.form.value);
+      if(this.form.valid) {
+        console.log('Subimit')
+      }
+    }
+
+    hasError(field: string) {
+      return this.form.get(field)?.errors;
+    }
+
 }
 

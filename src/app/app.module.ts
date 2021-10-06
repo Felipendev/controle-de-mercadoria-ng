@@ -10,8 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './views/home/home.module';
 import { LocalDateTimePipe } from './shared/pipe/local-date-time.pipe';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +24,6 @@ import { LocalDateTimePipe } from './shared/pipe/local-date-time.pipe';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule
-    
   ],
   providers: [
     LocalDateTimePipe,
