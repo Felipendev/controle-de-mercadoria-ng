@@ -19,9 +19,6 @@ export class ClienteFormComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
   clientes: Cliente[] = [];
-
-
-  @Input() pattern!: string | RegExp
   
   constructor(
     private fb: FormBuilder,

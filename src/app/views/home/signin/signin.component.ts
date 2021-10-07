@@ -1,3 +1,4 @@
+import { AccountService } from './../../../core/authentication/account.service';
 import { AuthService } from './../../../core/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -10,32 +11,35 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SigninComponent implements OnInit {
 
+  login = {
+    nome: '',
+    password: ''
+  };
+
   submitted = false;
   loginForm!: FormGroup;
 
   constructor(
+    private accountService: AccountService,
     private formbuilder: FormBuilder,
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.loginForm = this.formbuilder.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-
-
-  }
-  login(){
-   this.router.navigate(["/home"]);
+    // this.loginForm = this.formbuilder.group({
+    //   userName: [null, [Validators.required, Validators.min]],
+    //   password: [null, Validators.required]
+    // });
   }
 
-  onSubmit() {
-    this.submitted = true
-    console.log(this.loginForm.value);
-    if(this.loginForm.valid) {
-      console.log('Subimit')
+  async onSubmit() {
+    try {
+      const result = await this.accountService.login(this.login);
+      console.log(`Login efetuado: ${result}`);
+      this.router.navigate(['']);
+    } catch (error) {
+      console.log(error);
     }
   }
 

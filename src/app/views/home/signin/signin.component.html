@@ -8,27 +8,34 @@
             </div>
 
             <div class="modal-body p-5 pt-0 ">
-                <form [formGroup]= "loginForm">
+                <form (ngSubmit)="onSubmit()" #form="ngForm">
                     <div class="form-floating mb-3">
                         <input 
                             type="text" class="form-control rounded-4" 
-                            formControlName="userName" id="floatingInput" 
-                            placeholder="vinicius@cade" [ngClass]="{'is-invalid': submitted && hasError('nome')}">
-                        <label for="floatingInput">Nome</label>
+                             id="floatingInput" 
+                            placeholder="vinicius@cade" required
+                            [(ngModel)]="login.nome"
+                            [ngClass]="{'is-invalid': submitted && hasError('nome')}">
+                        <label>Nome</label>
                         <small 
-                            *ngIf="hasError('userName') && hasError('userName')!['required']" 
+                            *ngIf="hasError('nome') && hasError('nome')!['required']" 
                             text="O nome precisa ser preenchido">
                         </small>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control rounded-4" formControlName="password" id="floatingPassword" placeholder="Senha">
-                        <label for="floatingPassword">Senha</label>
+                        <input 
+                            type="password" class="form-control rounded-4" 
+                             id="password" 
+                                placeholder="Senha" required
+                            [(ngModel)]="login.password"
+                            [ngClass]="{'is-invalid': submitted && hasError('password')}">
+                        <label>Senha</label>
                         <small 
                             *ngIf="hasError('password') && hasError('password')!['required']" 
                             text="A senha precisa ser preenchida">
                         </small>
                     </div>
-                    <button [disabled]="loginForm.invalid" (submited)="login()" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">Login</button>
+                    <button [disabled]="form.form.invalid" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">Login</button>
                     <small class="text-muted">Acesso Administrador </small>
                     <hr class="my-4">
                 </form>
