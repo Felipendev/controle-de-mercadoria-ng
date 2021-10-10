@@ -1,6 +1,6 @@
 import { AccountService } from './../../../core/authentication/account.service';
 import { AuthService } from './../../../core/auth.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,8 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SigninComponent implements OnInit {
 
-  login = {
-    nome: '',
+  administrador = {
+    login: '',
     password: ''
   };
 
@@ -27,15 +27,12 @@ export class SigninComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    // this.loginForm = this.formbuilder.group({
-    //   userName: [null, [Validators.required, Validators.min]],
-    //   password: [null, Validators.required]
-    // });
+
   }
 
   async onSubmit() {
     try {
-      const result = await this.accountService.login(this.login);
+      const result = await this.accountService.login(this.administrador);
       console.log(`Login efetuado: ${result}`);
       this.router.navigate(['']);
     } catch (error) {
@@ -43,8 +40,12 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  hasError(field: string) {
-    return this.loginForm.get(field)?.errors;
+  // hasError(field: string) {
+  //   return this.loginForm.get(field)?.errors;
+  // }
+
+  public login() {
+    this.accountService.login(this.administrador);
   }
 
 }
