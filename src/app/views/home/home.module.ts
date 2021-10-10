@@ -10,7 +10,6 @@ import { HomeComponent } from './home.component';
 import { LocalDateTimePipe } from 'src/app/shared/pipe/local-date-time.pipe';
 import { PhonePipe } from 'src/app/shared/pipe/phone/phone.pipe';
 import { FiltroPipe } from './../../shared/pipe/filtro-form/filtro.pipe';
-import { VmessageModel } from 'src/app/shared/components/vmessage/vmessage/vmessage.model';
 import { MenuModule } from 'src/app/shared/menu/menu.module';
 import { NgxMaskModule } from 'ngx-mask';
 @NgModule({
@@ -32,7 +31,6 @@ import { NgxMaskModule } from 'ngx-mask';
         CommonModule,
         ReactiveFormsModule,
         FormsModule,
-        VmessageModel,
         MenuModule,
         NgxMaskModule.forRoot({
             dropSpecialCharacters: false

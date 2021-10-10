@@ -19,9 +19,6 @@ export class ClienteFormComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
   clientes: Cliente[] = [];
-
-
-  @Input() pattern!: string | RegExp
   
   constructor(
     private fb: FormBuilder,
@@ -59,13 +56,11 @@ export class ClienteFormComponent implements OnInit {
       this.service.postCliente(this.form.value).subscribe(result => {});
       // location.assign("/home");
     }
-
     
     cancelar(){
       this.submitted = false;
       this.form.reset();
     }
-
 
     toggle() {
       this.isShow = !this.isShow;

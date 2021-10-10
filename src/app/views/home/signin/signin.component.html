@@ -8,24 +8,36 @@
             </div>
 
             <div class="modal-body p-5 pt-0 ">
-                <form [formGroup]= "loginForm" (submit)="login()">
+                <form (ngSubmit)="onSubmit()" #form="ngForm">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-4" formControlName="userName" id="floatingInput" placeholder="vinicius@cade">
-                        <label for="floatingInput">Nome</label>
-                        <app-vmessage 
-                            *ngIf= "loginForm.get('userName')?.errors?.required" 
-                            text="O nome precisa ser preenchido">
-                        </app-vmessage>
+                        <input 
+                            type="text" class="form-control rounded-4" 
+                             id="floatingInput" 
+                            placeholder="vinicius@cade" required
+                            name="login"
+                            [(ngModel)]="administrador.login"
+                            >
+                        <label>login</label>
+                        <!-- <small 
+                            *ngIf="hasError('login') && hasError('login')!['required']" 
+                            text="O login precisa ser preenchido">
+                        </small> -->
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control rounded-4" formControlName="password" id="floatingPassword" placeholder="Senha">
-                        <label for="floatingPassword">Senha</label>
-                        <app-vmessage 
-                            *ngIf= "loginForm.get('password')?.errors?.required" 
+                        <input 
+                            type="password" class="form-control rounded-4" 
+                             id="password" 
+                             name="password"
+                                placeholder="Senha" required
+                            [(ngModel)]="administrador.password"
+                            >
+                        <label>Senha</label>
+                        <!-- <small 
+                            *ngIf="hasError('password') && hasError('password')!['required']" 
                             text="A senha precisa ser preenchida">
-                        </app-vmessage>
+                        </small> -->
                     </div>
-                    <button [disabled]="loginForm.invalid" (click)="login()" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">Login</button>
+                    <button [disabled]="form.form.invalid" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="button" (click)="login()">Login</button>
                     <small class="text-muted">Acesso Administrador </small>
                     <hr class="my-4">
                 </form>
