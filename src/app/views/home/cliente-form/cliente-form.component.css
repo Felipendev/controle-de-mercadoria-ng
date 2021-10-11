@@ -33,7 +33,12 @@
     opacity: 1;
 }
 
-.rounded-circle{
+.fa-retweet {
+    width: 14px;
+
+}
+
+.efeito-pulsar{
     animation: shadow-pulse 1s infinite;
 }
 @keyframes shadow-pulse {
