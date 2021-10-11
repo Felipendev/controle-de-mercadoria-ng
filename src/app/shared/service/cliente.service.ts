@@ -11,7 +11,6 @@ export class ClienteService {
 
   API = "http://localhost:8080/api/v1/cliente";
 
-  filtroEmpleado: '' = "";
 
   httpOptions = {
     headers: new HttpHeaders({
