@@ -10,11 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './views/home/home.module';
 import { LocalDateTimePipe } from './shared/pipe/local-date-time.pipe';
-import { AuthenticationComponent } from './core/authentication/authentication/authentication.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticationComponent,
   ],
   imports: [
     BrowserModule,

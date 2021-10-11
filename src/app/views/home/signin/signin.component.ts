@@ -1,5 +1,4 @@
-import { AccountService } from './../../../core/authentication/account.service';
-import { AuthService } from './../../../core/auth.service';
+
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,9 +19,7 @@ export class SigninComponent implements OnInit {
   loginForm!: FormGroup;
 
   constructor(
-    private accountService: AccountService,
     private formbuilder: FormBuilder,
-    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -30,14 +27,10 @@ export class SigninComponent implements OnInit {
 
   }
 
-  async onSubmit() {
-    try {
-      const result = await this.accountService.login(this.administrador);
-      console.log(`Login efetuado: ${result}`);
-      this.router.navigate(['']);
-    } catch (error) {
-      console.log(error);
-    }
+onSubmit() {
+  this.submitted = true;
+  this.router.navigate(['/home'])
+
   }
 
   // hasError(field: string) {
@@ -45,7 +38,8 @@ export class SigninComponent implements OnInit {
   // }
 
   public login() {
-    this.accountService.login(this.administrador);
+    this.submitted = false
+    this.loginForm.reset(); 
   }
 
 }

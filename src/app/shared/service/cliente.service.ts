@@ -9,7 +9,7 @@ import { Cliente } from '../model/cliente.model';
 })
 export class ClienteService {
 
-
+  API = "http://localhost:8080/api/v1/cliente";
 
   filtroEmpleado: '' = "";
 
@@ -24,10 +24,10 @@ export class ClienteService {
   ) { }
 
   public getClientes(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(`${environment.api}/listAll`);
+    return this.http.get<Cliente[]>( this.API + "/listAll");
   }
 
   public postCliente(cliente: Cliente): Observable<Cliente>{
-    return this.http.post<Cliente>(`${environment.api}`, cliente, this.httpOptions);
+    return this.http.post<Cliente>(this.API, cliente, this.httpOptions);
   }
 }
