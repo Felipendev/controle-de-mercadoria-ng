@@ -15,7 +15,6 @@
                              id="floatingInput" 
                             placeholder="vinicius@cade" required
                             name="login"
-                            [(ngModel)]="administrador.login"
                             >
                         <label>login</label>
                         <!-- <small 
@@ -29,7 +28,6 @@
                              id="password" 
                              name="password"
                                 placeholder="Senha" required
-                            [(ngModel)]="administrador.password"
                             >
                         <label>Senha</label>
                         <!-- <small 
@@ -37,7 +35,7 @@
                             text="A senha precisa ser preenchida">
                         </small> -->
                     </div>
-                    <button [disabled]="form.form.invalid" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="button" (click)="login()">Login</button>
+                    <button [disabled]="form.form.invalid" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="button" (click)="onSubmit()">Login</button>
                     <small class="text-muted">Acesso Administrador </small>
                     <hr class="my-4">
                 </form>
