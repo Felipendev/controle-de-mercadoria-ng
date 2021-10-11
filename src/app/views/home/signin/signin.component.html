@@ -1,6 +1,6 @@
 <div class="modal modal-signin d-block bg-info py-5" tabindex="-1" role="dialog" id="modalSignin">
     <img class="logo" src="https://i.ibb.co/Qdcy14T/unnamed.png" alt="Logo da educação Adventista" />
-    <div class="modal-dialog" role="document" >
+    <div class="modal-dialog" role="document">
         <div class="modal-content rounded-5 shadow justify-content-center">
             <div class="modal-header p-5 pb-4 border-bottom-0">
                 <!-- <h5 class="modal-title">Modal title</h5> -->
@@ -8,34 +8,38 @@
             </div>
 
             <div class="modal-body p-5 pt-0 ">
-                <form (ngSubmit)="onSubmit()" #form="ngForm">
-                    <div class="form-floating mb-3">
-                        <input 
-                            type="text" class="form-control rounded-4" 
-                             id="floatingInput" 
-                            placeholder="vinicius@cade" required
-                            name="login"
-                            >
-                        <label>login</label>
-                        <!-- <small 
-                            *ngIf="hasError('login') && hasError('login')!['required']" 
-                            text="O login precisa ser preenchido">
-                        </small> -->
+                <form (ngSubmit)="onSubmit()" class="needs-validation" novalidate [formGroup]="loginForm">
+                    <div class="form-floating-sm mb-3">
+                        <input type="text" class="form-control" id="login" placeholder="Login"
+                            required name="login" formControlName="login"
+                            [ngClass]="{'is-invalid': submitted && loginForm.get('login')!.errors}"
+                        >
+                        <small class="invalid-feedback"
+                            *ngIf="hasError('login') && hasError('login')!['required']">
+                            O login precisa ser preenchido
+                        </small>
+                        <small class="invalid-feedback" *ngIf="hasError('login') && hasError('login')!['minlength']">
+                            O login precisa ter no mínino {{ hasError('login')!['minlength'].requiredLength }}
+                            caracteres.
+                        </small>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input 
-                            type="password" class="form-control rounded-4" 
-                             id="password" 
-                             name="password"
-                                placeholder="Senha" required
-                            >
-                        <label>Senha</label>
-                        <!-- <small 
-                            *ngIf="hasError('password') && hasError('password')!['required']" 
-                            text="A senha precisa ser preenchida">
-                        </small> -->
+                    <div class="form-floating-sm mb-3">
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Senha" required formControlName="password"
+                            [ngClass]="{'is-invalid': submitted && loginForm.get('password')!.errors}">
+            
+                        <small class="invalid-feedback"
+                            *ngIf="hasError('password') && hasError('password')!['required']">
+                            A senha precisa ser preenchido
+                        </small>
+                        <small class="invalid-feedback"
+                            *ngIf="hasError('password') && hasError('password')!['minlength']">
+                            A senha precisa ter no mínino {{ hasError('password')!['minlength'].requiredLength }}
+                            caracteres.
+                        </small>
                     </div>
-                    <button [disabled]="form.form.invalid" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="button" (click)="onSubmit()">Login</button>
+                    <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary"
+                        type="button" (click)="onSubmit()">Login</button>
                     <small class="text-muted">Acesso Administrador </small>
                     <hr class="my-4">
                 </form>

@@ -10,9 +10,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './views/home/home.module';
 import { LocalDateTimePipe } from './shared/pipe/local-date-time.pipe';
+import { ErrorMsgComponent } from './shared/error-msg/error-msg.component';
 @NgModule({
   declarations: [
     AppComponent,
+    ErrorMsgComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,9 @@ import { LocalDateTimePipe } from './shared/pipe/local-date-time.pipe';
   providers: [
     LocalDateTimePipe,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    ErrorMsgComponent
+  ]
 })
 export class AppModule { }
