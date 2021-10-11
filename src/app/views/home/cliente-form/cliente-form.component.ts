@@ -5,6 +5,9 @@ import * as moment from 'moment';
 import { ClienteService } from 'src/app/shared/service/cliente.service';
 import { StatusProduto } from 'src/app/shared/model/status-produto.enum';
 import { Cliente } from 'src/app/shared/model/cliente.model';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
+import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
+import { AlertModelService } from 'src/app/shared/alert-model.service';
 
 @Component({
   selector: 'app-cliente-form',
@@ -18,11 +21,14 @@ export class ClienteFormComponent implements OnInit {
   searchValue!: string;
   form!: FormGroup;
   submitted = false;
+  bsModalRef!: BsModalRef;
   clientes: Cliente[] = [];
   
   constructor(
     private fb: FormBuilder,
-    private service: ClienteService
+    private service: ClienteService,
+    private alertService: AlertModelService
+    //private modalService: BsModalService
     ) { }
 
     ngOnInit(): void {
@@ -76,6 +82,13 @@ export class ClienteFormComponent implements OnInit {
 
     hasError(field: string) {
       return this.form.get(field)?.errors;
+    }
+
+    handleError() {
+      this.alertService.showAlertDanger('Erro ao carregar cursos. Tente novamente mais tarde');
+      // this.bsModalRef = this.modalService.show(AlertModalComponent);
+      // this.bsModalRef.content.type = 'danger';
+      // this.bsModalRef.content.message = 'danger';
     }
 
 }

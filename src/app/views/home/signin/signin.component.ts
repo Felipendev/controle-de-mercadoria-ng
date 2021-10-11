@@ -35,9 +35,8 @@ export class SigninComponent implements OnInit {
   }
 
 onSubmit() {
-  this.submitted = true;
-  // this.router.navigate(['/home'])
-
+    this.submitted = true;
+    this.router.navigate(['/home'])
   }
 
   hasError(field: string) {
