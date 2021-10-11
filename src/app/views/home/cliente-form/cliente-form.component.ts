@@ -1,3 +1,4 @@
+import { empty, Observable, Subject } from 'rxjs';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
@@ -5,6 +6,10 @@ import * as moment from 'moment';
 import { ClienteService } from 'src/app/shared/service/cliente.service';
 import { StatusProduto } from 'src/app/shared/model/status-produto.enum';
 import { Cliente } from 'src/app/shared/model/cliente.model';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
+import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
+import { AlertModelService } from 'src/app/shared/alert-model.service';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cliente-form',
@@ -18,11 +23,14 @@ export class ClienteFormComponent implements OnInit {
   searchValue!: string;
   form!: FormGroup;
   submitted = false;
-  clientes: Cliente[] = [];
+  bsModalRef!: BsModalRef;
+  error$ = new Subject<boolean>();
+  clientes$!: Observable<Cliente[]>;
   
   constructor(
     private fb: FormBuilder,
-    private service: ClienteService
+    private service: ClienteService,
+    private alertService: AlertModelService,
     ) { }
 
     ngOnInit(): void {
@@ -35,7 +43,7 @@ export class ClienteFormComponent implements OnInit {
         contato: [null, [this.validarObrigatoriedade, Validators.minLength(8)]],
         statusProduto: StatusProduto.RECEBIDO
       });
-      this.getClientes();
+      this.onRefresh();
     }
 
     validarObrigatoriedade(input: FormControl) {
@@ -43,10 +51,9 @@ export class ClienteFormComponent implements OnInit {
     }
   
     
-    getClientes(){
-      this.service.getClientes().subscribe(data => {
-        this.clientes = data;
-      });
+   getClientes(){
+      // this.service.getClientes()
+      // .subscribe(dados =>  this.clientes = dados);
     }
     
     criaCliente(){
@@ -76,6 +83,25 @@ export class ClienteFormComponent implements OnInit {
 
     hasError(field: string) {
       return this.form.get(field)?.errors;
+    }
+
+    handleError() {
+      this.alertService.showAlertDanger('Erro ao carregar produtos. Tente novamente mais tarde');
+      // this.bsModalRef = this.modalService.show(AlertModalComponent);
+      // this.bsModalRef.content.type = 'danger';
+      // this.bsModalRef.content.message = 'danger';
+    }
+
+    onRefresh() {
+      this.clientes$ = this.service.getClientes()
+      .pipe(
+        catchError(error => {
+          console.error(error);
+          this.error$.next(true);
+          this.handleError()
+          return empty();
+        })
+      );
     }
 
 }

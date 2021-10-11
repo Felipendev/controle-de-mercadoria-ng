@@ -1,0 +1,9 @@
+.no-margin{
+    margin-bottom: 0;
+}
+
+.no-padding-margin {
+    border: none;    
+    background: transparent;
+    font-size: 1.5rem;
+}

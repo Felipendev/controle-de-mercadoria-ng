@@ -12,6 +12,7 @@ import { PhonePipe } from 'src/app/shared/pipe/phone/phone.pipe';
 import { FiltroPipe } from './../../shared/pipe/filtro-form/filtro.pipe';
 import { MenuModule } from 'src/app/shared/menu/menu.module';
 import { NgxMaskModule } from 'ngx-mask';
+import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
 @NgModule({
     declarations: [
         HeaderComponent,
@@ -21,12 +22,15 @@ import { NgxMaskModule } from 'ngx-mask';
         ClienteFormComponent,
         PhonePipe,
         FiltroPipe,
-        SigninComponent
+        SigninComponent,
+        AlertModalComponent,
         
     ],
     exports:[
-        HomeComponent
+        HomeComponent,
+        AlertModalComponent
     ],
+    entryComponents: [ AlertModalComponent ],
     imports: [
         CommonModule,
         ReactiveFormsModule,

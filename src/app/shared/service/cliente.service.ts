@@ -1,7 +1,7 @@
-import { environment } from './../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { delay, tap } from 'rxjs/operators';
 import { Cliente } from '../model/cliente.model';
 
 @Injectable({
@@ -11,7 +11,6 @@ export class ClienteService {
 
   API = "http://localhost:8080/api/v1/cliente";
 
-  filtroEmpleado: '' = "";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -24,7 +23,11 @@ export class ClienteService {
   ) { }
 
   public getClientes(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>( this.API + "/listAll");
+    return this.http.get<Cliente[]>( this.API + "/listAll")
+      .pipe(
+        delay(2000),
+        tap(console.log)
+      )
   }
 
   public postCliente(cliente: Cliente): Observable<Cliente>{

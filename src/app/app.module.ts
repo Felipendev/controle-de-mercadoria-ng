@@ -10,9 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './views/home/home.module';
 import { LocalDateTimePipe } from './shared/pipe/local-date-time.pipe';
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,11 +24,14 @@ import { LocalDateTimePipe } from './shared/pipe/local-date-time.pipe';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ModalModule.forRoot()
   ],
   providers: [
     LocalDateTimePipe,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+  ]
 })
 export class AppModule { }
