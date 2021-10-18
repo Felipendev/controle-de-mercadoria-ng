@@ -18,10 +18,11 @@ const routes: Routes = [
 },
 { 
   path: 'novo', 
-  component: ClienteFormComponent 
-},{ 
+  component: HomeComponent 
+},
+{ 
   path: 'editar/:id', 
-  component: ClienteFormComponent 
+  component: HomeComponent 
 },
 {
     path: 'not-found',

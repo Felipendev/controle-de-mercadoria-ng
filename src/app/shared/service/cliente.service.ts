@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { delay, tap } from 'rxjs/operators';
+import { delay, tap, take } from 'rxjs/operators';
 import { Cliente } from '../model/cliente.model';
 
 @Injectable({
@@ -22,7 +21,7 @@ export class ClienteService {
     private http: HttpClient
   ) { }
 
-  public getClientes(): Observable<Cliente[]> {
+  getClientes(){
     return this.http.get<Cliente[]>( this.API + "/listAll")
       .pipe(
         delay(2000),
@@ -30,7 +29,11 @@ export class ClienteService {
       )
   }
 
-  public postCliente(cliente: Cliente): Observable<Cliente>{
+  loadById(id: any) {
+    return this.http.get(`${this.API}/${id}`).pipe(take(1));
+  }
+
+  postCliente(cliente: Cliente){
     return this.http.post<Cliente>(this.API, cliente, this.httpOptions);
   }
 }
